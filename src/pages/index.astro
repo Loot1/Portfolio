@@ -1,0 +1,61 @@
+---
+import Button from "@/components/Button.astro";
+import Main from "@/layouts/Main.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Main>
+    <section class="py-20 flex md:flex-row flex-col gap-10 md:gap-0">
+        <div class="flex flex-col gap-6 justify-start items-start md:w-1/2">
+            <h1 class="text-pblack">Salut ! Je m'appelle Louis Sachy !</h1>
+            <p class="text-4xl md:text-5xl font-bold">
+                Développement d'applications et éducation
+            </p>
+            <p>
+                Je suis Louis SACHY. Je suis développeur et étudiant en
+                éducation à la santé et au développement durable. Je suis
+                également engagé dans le tissu associatif à Amiens.
+            </p>
+            <div class="flex md:flex-row flex-col gap-4 md:gap-10">
+                <Button text="En savoir plus" href="/about" class="bg-pgreen" />
+                <Button
+                    text="Développement"
+                    href="/development"
+                    class="bg-pblue"
+                />
+            </div>
+        </div>
+        <div
+            class="md:w-1/2 object-contain flex items-center justify-center p-10 group"
+        >
+            <a rel="noopener noreferrer" href="about">
+                <div
+                    class="bg-pblue border-3 border-black rounded-2xl h-64 w-72 shadow-card group-hover:shadow-hover flex transition relative"
+                    style={{
+                        backgroundImage:
+                            "url(/src/assets/photo-louis-sachy.jpg)",
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                    }}
+                >
+                    <div
+                        class="absolute -top-8 -left-12 text-5xl bg-ppink px-5 py-1 z-10 shadow-card group-hover:shadow-hover transition rounded-t-2xl border-3 border-black rounded-bl-2xl rounded-br-sm"
+                    >
+                        <Icon name="experiences/education" />
+                    </div>
+                    <div
+                        class="absolute top-16 -right-16 text-5xl bg-pyellow p-2 z-10 shadow-card group-hover:shadow-hover transition rounded-full border-3 border-black"
+                    >
+                        <Icon name="experiences/developer" />
+                    </div>
+                    <div
+                        class="absolute text-nowrap flex items-center gap-4 -bottom-12 right-0 pr-4 bg-pgreen pl-1 z-10 shadow-card1 group-hover:shadow-card transition rounded-full border-3 border-black"
+                    >
+                        <Icon name="video-game" />
+                        <p>Louis SACHY</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+</Main>

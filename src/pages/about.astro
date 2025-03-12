@@ -1,0 +1,53 @@
+---
+import Layout from "@/layouts/BlogPost.astro";
+const tags = ["louis sachy", "développeur", "amiens"];
+const description = `
+  <p class="text-left">
+    Bienvenue sur ma présentation ! 
+  </p>
+`;
+
+let date = new Date();
+let mat = date.getFullYear() - 2002;
+if (date.getMonth() < 4 || (date.getMonth() == 4 && date.getDate() < 11))
+	mat = mat - 1;
+---
+
+<Layout
+	tags={tags}
+	icon="video-game"
+	title="Présentation"
+	description={description}
+	pubDate={new Date("March 07 2025")}
+	heroImage="/src/assets/about.jpg"
+>
+	<p>
+		Je m'appelle Louis SACHY, j'ai {mat} ans et j'habite à Amiens.
+	</p>
+	<p>
+		<strong>Développeur autodidacte</strong> depuis mes 12 ans, j'ai acquis cette
+		passion à travers les jeux-vidéos et j'ai réussi à la transformer en compétences.
+		Je me suis formé en conception et développement d'application à l'école La
+		MANU à Amiens. Ce diplôme, que j'ai réalisé en alternance dans une agence
+		de marketing numérique, m'a permi de consolider mes compétences et de les
+		mettre en oeuvre professionnellement.
+	</p>
+	<p>
+		Le <strong>milieu associatif</strong> occupe une place importante dans ma
+		vie. J'adhère pour la première fois à une association à mes 15 ans dans une
+		association agréée de sécurité civile : la Protection Civile. J'aurai l'occasion,
+		pendant 4 ans, de participer à de nombreux postes de secours, me former aux
+		premiers secours en équipe et surtout découvrir le monde associatif et sa
+		chaleur humaine.
+	</p>
+	<p>
+		A ce jour, je m'investis dans une association de lutte contre les
+		discriminations que j'ai rejoint il y a plusieurs années.
+		Très investi dans l'axe de sensibilisation et de prévention au sein de cette structure, c'est en grande partie ce qui m'a poussé en septembre
+		2024 à intégrer le <strong>Master</strong>
+		MEEF Encadrement Educatif en parcours <strong
+			>Education à la Santé et au Développement Durable</strong
+		>
+		à l'Université de Picardie Jules Verne.
+	</p>
+</Layout>

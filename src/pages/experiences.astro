@@ -1,0 +1,16 @@
+---
+import Main from "@/layouts/Main.astro";
+import { JOBS, TRAININGS } from "src/consts";
+import Timeline from "@/components/Timeline.astro";
+---
+
+<Main>
+    <section class="flex flex-col gap-4">
+        <p class="text-pblack text-center">Sur cette page, une présentation de mon parcours, de mes formations et de mes expériences !</p>
+        <h1 class="text-4xl font-bold text-center">Parcours - Louis SACHY</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 pt-16">
+            <Timeline title="Formation et études" values={TRAININGS} />
+            <Timeline title="Expériences" values={JOBS} />
+        </div>
+    </section>
+</Main>

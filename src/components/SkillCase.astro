@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { HTMLAttributes } from 'astro/types';
+
+const { title = "", description = "", icon = "1", ...props } = Astro.props;
+
+export interface SkillCaseProps extends HTMLAttributes<'div'> {
+    title: string;
+    icon: string;
+    description: string;
+}
+---
+
+<li class="text-left rounded-3xl border-1 border-black shadow-card group hover:shadow-hover transition px-4 py-6 flex flex-col gap-6">
+    <div class="flex flex-row gap-4 items-center">
+        <div class="bg-pblue rounded-full text-4xl p-2 self-start border-1 border-black shadow-card1 group-hover:shadow-card transition">
+            <Icon name={icon} />
+        </div>
+        <h2 class="text-xl font-semibold">{title}</h2>
+    </div>
+    <div set:html={description} class="text-justify font-light" />
+    <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4 mx-2">
+        <slot />
+    </div>
+</li>

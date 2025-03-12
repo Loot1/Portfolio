@@ -1,0 +1,42 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { HTMLAttributes } from 'astro/types';
+
+const { title = "", values = [], ...props } = Astro.props;
+
+export interface TimelineProps extends HTMLAttributes<'div'> {
+    title: string;
+    values: any[];
+}
+---
+
+<div>
+    <h2 class="text-2xl mb-10 font-bold text-center">{title}</h2>
+    <div class="flex">
+        <div class="relative border-s border-black left-4 z-6"></div>
+        <ol class="relative z-10">
+            {values.map((value : any) => (
+                <li class="mb-10 ms-16 group transition">
+                    <div class="absolute flex items-center bg-pyellow justify-center rounded-full text-4xl p-2 -start-3 border-1 border-black shadow-card1 group-hover:shadow-card transition">
+                        <Icon name={value.icon} />
+                    </div>
+                    <h4 class="mb-1 text-lg font-semibold">
+                        {value.title}
+                    </h4>
+                    <h3 class="mb-1 text-md">
+                        {value.organization}
+                    </h3>
+                    <time class="block mb-2 text-sm leading-none text-gray-500">
+                        {value.period}
+                    </time>
+                    {value.description.map((desc : any) => (
+                        <p class="text-base text-justify font-light">
+                            {desc}
+                        </p>
+                    ))}
+
+                </li>
+            ))}
+        </ol>
+    </div>
+</div>

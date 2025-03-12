@@ -1,0 +1,27 @@
+---
+import Main from "@/layouts/Main.astro";
+import { Image } from "astro:assets";
+import SkillCase from "@/components/SkillCase.astro";
+import { SKILLS } from "src/consts";
+
+const BASE_PATH = "/src/assets/skills/";
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/skills/*.{jpg,png}");
+---
+
+{ /* responsive */ }
+
+<Main>
+    <section class="flex flex-col gap-4">
+        <p class="text-pblack text-center">Ici, vous trouverez mes compétences en lien avec le développement et les outils que j'utilise.</p>
+        <h1 class="text-4xl font-bold text-center">Développement - Louis SACHY</h1>
+        <ul class="grid grid-cols-1 md:grid-cols-2 justify-center md:justify-start gap-8 py-12">
+            {SKILLS.map(skill => (
+                <SkillCase title={skill.title} icon={skill.icon} description={skill.description}>
+                    {skill.images.map(image => (
+                        <Image class="transition h-10 w-10" src={images[BASE_PATH + image]()} alt={`Logo de ${image.split('.')[0]}`} />
+                    ))}
+                </SkillCase>
+            ))}
+        </ul>
+    </section>
+</Main>
