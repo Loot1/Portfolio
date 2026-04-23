@@ -31,8 +31,10 @@ const bgClasses = [
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 const SKILLS_BASE_PATH = "/src/assets/skills/";
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpg,png}')
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpg,jpeg,png,webp,avif}')
 const skillImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/skills/*.{jpg,png}')
+const heroImageLoader = images[heroImage] ?? images['/src/assets/about.jpg'];
+const heroImageMetadata = heroImageLoader ? (await heroImageLoader()).default : undefined;
 
 const getRandomClass = () => {
   return bgClasses[Math.floor(Math.random() * bgClasses.length)];
@@ -57,7 +59,9 @@ const getRandomClass = () => {
             </h1>
             <p set:html={description} />
           </div>
-          <Image src={images[heroImage]()} alt={title} class="h-96 w-full object-cover"/>
+          {heroImageMetadata && (
+            <Image src={heroImageMetadata} alt={title} class="h-96 w-full object-cover" />
+          )}
         </div>
         <div class="text-black px-6 md:px-0">
           <div class="">

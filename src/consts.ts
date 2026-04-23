@@ -4,7 +4,7 @@
 import type { HeaderLinkProps } from "./components/navigation/HeaderLink.astro";
 
 export const SITE_TITLE = 'Louis SACHY';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_DESCRIPTION = 'Portfolio de Louis SACHY, développeur web et d\'applications.';
 
 export const NAVIGATION : HeaderLinkProps[] = [
     { text: 'Présentation', href: '/about', style: 'secondary' },
@@ -75,7 +75,7 @@ export const JOBS = [
         title: "Bénévole / Administrateur",
         icon: "experiences/association",
         organization: "Flash Our True Colors",
-        period: "2022 - Aujourd’hui",
+        period: "2022 - 2026",
         description: [
             "- Gestion administrative : montage de dossier de subvention, rédaction de bilan, demande d’agrément et gestion financière.",
             "- Vie associative : mobilisation des bénévoles, liens avec les partenaires, organisation d’événements inter-associatifs, communication et participation ou organisation de rencontres de réseaux nationaux.",
