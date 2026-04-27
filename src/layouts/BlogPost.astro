@@ -79,7 +79,7 @@ const getRandomClass = () => {
             <hr />
           </div>
           <div class="flex justify-between py-10 md:flex-row flex-col">
-            <div class="prose text-justify max-w-md lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl flex flex-col">
+            <div class="prose prose-ul:my-0 prose-ul:py-0 prose-ol:my-0 prose-ol:py-0 text-justify max-w-md lg:max-w-2xl xl:max-w-4xl 2xl:max-w-6xl flex flex-col">
               <slot/>
             </div>
             <div class="flex flex-col gap-6" transition:animate="slide">
@@ -88,7 +88,7 @@ const getRandomClass = () => {
                 {
                   posts.map((post) => {
                     return (
-                      <li class=`text-left rounded-lg border-1 border-black shadow-card group hover:shadow-hover transition px-2 py-2 ${getRandomClass()}` >
+                      <li class={`text-left rounded-lg border-1 border-black shadow-card group hover:shadow-hover transition px-2 py-2 ${getRandomClass()}`} >
                         <a href={`/projects/${post.id}/`}>
                           <h4>{post.data.title}</h4>
                         </a>
