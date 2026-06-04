@@ -24,13 +24,13 @@ export const TRAININGS = [
         organization: "Université de Picardie Jules Verne - INSPÉ Amiens"
     },
     {
-        title: "Incubateur de l’Economie Sociale et Solidaire",
+        title: "Incubateur de l'Economie Sociale et Solidaire",
         icon: "experiences/economie-sociale-et-solidaire",
         description: [
             "4 mois d'accompagnement sur le montage de projet en écomoie sociale et solidaire.",
         ],
         period: "oct. 2023 - jan. 2024",
-        organization: "Katalyze / PTCE d’Amiens"
+        organization: "Katalyze / PTCE d'Amiens"
     },
     {
         title: "Initiation aux compétences psychosociales",
@@ -45,16 +45,25 @@ export const TRAININGS = [
         title: "Certificat de Formation à la Gestion Associative",
         icon: "experiences/association-education",
         description: [
-            "Une formation d'une semaine sur les responsabilités d'un administrateur dans la gestion administrative, financière et humaine d’une association.",
+            "Une formation d'une semaine sur les responsabilités d'un administrateur dans la gestion administrative, financière et humaine d'une association.",
         ],
         period: "avril 2023",
-        organization: "Maison des Associations d’Amiens Métropole (MAAM)"
+        organization: "Maison des Associations d'Amiens Métropole (MAAM)"
     },
     {
-        title: "Concepteur Développeur d’Applications",
+        title: "Concepteur Développeur d'Applications",
         icon: "experiences/developer",
         description: [
             "Conception, développement et déploiement d'une application web, mobile ou desktop."
+        ],
+        period: "2020 - 2022",
+        organization: "La MANU"
+    },
+    {
+        title: "POEC Développeur d'applications mobiles",
+        icon: "experiences/developer",
+        description: [
+            "Formation intensive de 3 mois pour se former au développement mobile."
         ],
         period: "2020 - 2022",
         organization: "La MANU"
@@ -74,12 +83,12 @@ export const JOBS = [
     {
         title: "Bénévole / Administrateur",
         icon: "experiences/association",
-        organization: "Flash Our True Colors",
+        organization: "Association",
         period: "2022 - 2026",
         description: [
-            "- Gestion administrative : montage de dossier de subvention, rédaction de bilan, demande d’agrément et gestion financière.",
-            "- Vie associative : mobilisation des bénévoles, liens avec les partenaires, organisation d’événements inter-associatifs, communication et participation ou organisation de rencontres de réseaux nationaux.",
-            "- Sensibilisation : création de supports d’intervention, animation d’intervention, lien avec les établissements scolaires, mise en lien avec les programmes d’éducation."
+            "- Gestion administrative : montage de dossier de subvention, rédaction de bilan, demande d'agrément et gestion financière.",
+            "- Vie associative : mobilisation des bénévoles, liens avec les partenaires, organisation d'événements inter-associatifs, communication et participation ou organisation de rencontres de réseaux nationaux.",
+            "- Sensibilisation : création de supports d'intervention, animation d'intervention, lien avec les établissements scolaires, mise en lien avec les programmes d'éducation."
         ]
     },
     {
@@ -88,15 +97,16 @@ export const JOBS = [
         organization: "Anime Mon Web",
         period: "2021 - 2022",
         description: [
-            "- Développement de sites internets, d’applications mobiles et solutions applicatives externes.",
+            "- Développement de sites internets, d'applications mobiles et solutions applicatives externes.",
+            "- Gestion de l'ensemble des sites vitrines clients, opérations de maintenance et de mise à jour.",
             "- Mise en oeuvre de la stratégie de communication et des outils de plannification et de métrique associés.",
-            "- Gestion de projet opérationnel, pilotage de l’avancement avec l’équipe, priorisation des tâches et relation clientèle."
+            "- Gestion de projet opérationnel, pilotage de l'avancement avec l'équipe, priorisation des tâches et relation clientèle."
         ]
     },
     {
         title: "Équipier Secouriste",
         icon: "experiences/equipier-secouriste-protection-civile",
-        organization: "Protection civile de l’Oise",
+        organization: "Protection civile de l'Oise",
         period: "juin 2018 - déc. 2022",
         description: [
             "Engagement dans les postes de secours.",
