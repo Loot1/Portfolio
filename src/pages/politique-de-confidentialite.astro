@@ -14,7 +14,7 @@ const gaStreamId = GA_MEASUREMENT_ID.replace("G-", "");
         <h1 class="text-4xl font-bold text-center">Politique de confidentialité</h1>
         <p class="text-pblack text-center">Dernière mise à jour : {lastUpdate}</p>
 
-        <div class="prose prose-lg mx-auto max-w-3xl pt-10">
+        <div class="prose prose-lg max-w-3xl pt-10">
             <h2>En résumé</h2>
             <p>
                 Ce site ne comporte ni formulaire, ni compte utilisateur, ni
@@ -68,35 +68,44 @@ const gaStreamId = GA_MEASUREMENT_ID.replace("G-", "");
             </p>
 
             <h2>Cookies et stockage local</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Rôle</th>
-                        <th>Durée</th>
-                        <th>Consentement</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>cookie-consent</code></td>
-                        <td>
-                            Mémorise votre choix, pour ne pas vous le redemander à chaque
-                            page. Stocké dans votre navigateur, jamais transmis.
-                        </td>
-                        <td>6 mois</td>
-                        <td>Exempté (strictement nécessaire)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>_ga</code>, <code>_ga_{gaStreamId}</code>
-                        </td>
-                        <td>Distinguent les visiteurs pour la mesure d'audience.</td>
-                        <td>13 mois</td>
-                        <td>Requis</td>
-                    </tr>
-                </tbody>
-            </table>
+            {/* Le tableau ne peut pas se comprimer sous ~500px : on le fait
+                défiler dans son propre conteneur plutôt que la page entière. */}
+            <div
+                class="overflow-x-auto my-[2em]"
+                tabindex="0"
+                role="region"
+                aria-label="Cookies et stockage local"
+            >
+                <table class="my-0">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Rôle</th>
+                            <th>Durée</th>
+                            <th>Consentement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>cookie-consent</code></td>
+                            <td>
+                                Mémorise votre choix, pour ne pas vous le redemander à chaque
+                                page. Stocké dans votre navigateur, jamais transmis.
+                            </td>
+                            <td>6 mois</td>
+                            <td>Exempté (strictement nécessaire)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>_ga</code>, <code>_ga_{gaStreamId}</code>
+                            </td>
+                            <td>Distinguent les visiteurs pour la mesure d'audience.</td>
+                            <td>13 mois</td>
+                            <td>Requis</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <p>
                 La durée des cookies de mesure est ramenée à 13 mois, maximum
                 recommandé par la CNIL, contre deux ans dans la configuration par défaut
