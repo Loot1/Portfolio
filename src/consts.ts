@@ -6,6 +6,8 @@ import type { HeaderLinkProps } from "./components/navigation/HeaderLink.astro";
 export const SITE_TITLE = 'Louis SACHY';
 export const SITE_DESCRIPTION = 'Portfolio de Louis SACHY, développeur web et d\'applications.';
 
+export const GA_MEASUREMENT_ID = 'G-DPC8VNLVTB';
+
 export const NAVIGATION : HeaderLinkProps[] = [
     { text: 'Présentation', href: '/about', style: 'secondary' },
     { text: 'Développement', href: '/development', style: 'primary' },

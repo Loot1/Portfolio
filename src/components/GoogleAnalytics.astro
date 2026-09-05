@@ -1,0 +1,145 @@
+---
+// Google Analytics 4 (gtag.js), chargé uniquement après consentement explicite.
+//
+// Choix d'implémentation :
+//   - gtag.js n'est PAS injecté tant que l'internaute n'a pas accepté. Le
+//     Consent Mode seul ne suffirait pas au regard de la position de la CNIL :
+//     même en `analytics_storage: denied`, gtag.js continue d'envoyer des pings
+//     à Google. Ne rien charger est à la fois conforme et plus léger pour ceux
+//     qui refusent.
+//   - `send_page_view: false` : les pageviews sont envoyées à la main sur
+//     `astro:page-load`. Sans ça, le ClientRouter ne rechargeant pas la page,
+//     GA4 ne compterait qu'une seule vue par session.
+//   - en développement tout le mécanisme fonctionne (bandeau compris) mais
+//     gtag.js n'est jamais chargé, pour ne pas polluer les statistiques.
+//
+// Ce composant porte toute la logique, y compris celle du bandeau rendu par
+// <CookieConsent />. Les clics sont écoutés en délégation sur `document` : lié
+// une seule fois, ça survit aux transitions de page qui remplacent le <body>.
+import { GA_MEASUREMENT_ID } from "src/consts";
+
+const isProd = import.meta.env.PROD;
+---
+
+{
+  GA_MEASUREMENT_ID && (
+    <script is:inline define:vars={{ GA_MEASUREMENT_ID, isProd }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+
+      const STORAGE_KEY = "cookie-consent";
+      // La CNIL recommande de redemander au bout de 6 mois, refus compris.
+      const MAX_AGE = 182 * 24 * 60 * 60 * 1000;
+
+      // localStorage peut lever (navigation privée, cookies bloqués) : sans
+      // choix lisible on retombe sur `null`, donc le bandeau et aucun tracking.
+      function readConsent() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return null;
+          const saved = JSON.parse(raw);
+          if (!saved || Date.now() - saved.date > MAX_AGE) return null;
+          return saved.value === "granted" ? "granted" : "denied";
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function writeConsent(value) {
+        try {
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify({ value, date: Date.now() }),
+          );
+        } catch (error) {
+          /* choix non mémorisable : le bandeau réapparaîtra */
+        }
+      }
+
+      let pageLoadFired = false;
+
+      function sendPageView() {
+        gtag("event", "page_view", {
+          page_location: location.href,
+          page_title: document.title,
+        });
+      }
+
+      function loadAnalytics() {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+        gtag("consent", "update", { analytics_storage: "granted" });
+
+        if (!isProd) {
+          console.info("[GA] consentement accordé — gtag.js n'est pas chargé en développement");
+          return;
+        }
+
+        const tag = document.createElement("script");
+        tag.async = true;
+        tag.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID;
+        document.head.appendChild(tag);
+
+        gtag("js", new Date());
+        gtag("config", GA_MEASUREMENT_ID, {
+          send_page_view: false,
+          // 13 mois : durée maximale recommandée par la CNIL, contre
+          // 2 ans par défaut chez Google.
+          cookie_expires: 34128000,
+        });
+        document.addEventListener("astro:page-load", sendPageView);
+
+        // Consentement donné en cours de visite : `astro:page-load` est déjà
+        // passé pour la page courante, il faut l'envoyer nous-mêmes.
+        if (pageLoadFired) sendPageView();
+      }
+
+      function banner() {
+        return document.getElementById("cookie-consent");
+      }
+
+      function refreshBanner() {
+        const element = banner();
+        if (element) element.hidden = readConsent() !== null;
+      }
+
+      document.addEventListener("astro:page-load", () => {
+        pageLoadFired = true;
+        if (readConsent() === "granted") loadAnalytics();
+        refreshBanner();
+      });
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        const trigger = target instanceof Element ? target.closest("[data-consent]") : null;
+        if (!trigger) return;
+        const choice = trigger.dataset.consent;
+
+        // Retrait du consentement : le lien de pied de page rouvre le bandeau.
+        if (choice === "settings") {
+          event.preventDefault();
+          const element = banner();
+          if (element) {
+            element.hidden = false;
+            element.querySelector("[data-consent='granted']")?.focus();
+          }
+          return;
+        }
+
+        writeConsent(choice);
+        if (choice === "granted") loadAnalytics();
+        refreshBanner();
+      });
+    </script>
+  )
+}

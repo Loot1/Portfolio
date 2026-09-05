@@ -12,6 +12,7 @@ interface Props {
 import { ClientRouter } from "astro:transitions";
 import { SITE_TITLE } from "src/consts";
 import defaultSocialImage from "../assets/photo-louis-sachy.jpg";
+import GoogleAnalytics from "./GoogleAnalytics.astro";
 
 const { title, description, image = defaultSocialImage.src } = Astro.props;
 
@@ -74,3 +75,6 @@ const metaDescription = description
 <meta property="twitter:description" content={metaDescription} />
 <meta property="twitter:image" content={imageURL} />
 <meta property="twitter:image:alt" content={pageTitle} />
+
+<!-- Google Analytics -->
+<GoogleAnalytics />

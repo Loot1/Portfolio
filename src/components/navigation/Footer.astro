@@ -1,10 +1,12 @@
 ---
 const today = new Date();
 import { Icon } from "astro-icon/components";
+import CookieConsent from "@/components/CookieConsent.astro";
+import { GA_MEASUREMENT_ID } from "src/consts";
 ---
 
 <footer
-    class="flex flex-col items-center container mx-auto p-10 text-center gap-10 pb-40"
+    class="flex flex-col items-center container mx-auto p-10 text-center gap-10 pb-16"
 >
     &copy; {today.getFullYear()} Louis SACHY
     <div class="flex items-center gap-6 text-5xl">
@@ -46,4 +48,35 @@ import { Icon } from "astro-icon/components";
             <Icon name="gitlab" size="50" aria-hidden="true" />
         </a>
     </div>
+    <nav
+        class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-pblack"
+        aria-label="Informations légales"
+    >
+        <a href="/mentions-legales" class="underline underline-offset-4 hover:no-underline">
+            Mentions légales
+        </a>
+        <span aria-hidden="true">&middot;</span>
+        <a
+            href="/politique-de-confidentialite"
+            class="underline underline-offset-4 hover:no-underline"
+        >
+            Politique de confidentialité
+        </a>
+        {
+            GA_MEASUREMENT_ID && (
+                <Fragment>
+                    <span aria-hidden="true">&middot;</span>
+                    <button
+                        type="button"
+                        data-consent="settings"
+                        class="cursor-pointer underline underline-offset-4 hover:no-underline"
+                    >
+                        Gestion des cookies
+                    </button>
+                </Fragment>
+            )
+        }
+    </nav>
 </footer>
+
+<CookieConsent />

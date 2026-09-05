@@ -1,0 +1,111 @@
+---
+import Main from "@/layouts/Main.astro";
+import { SITE_TITLE } from "src/consts";
+
+const lastUpdate = "5 septembre 2026";
+---
+
+<Main
+    title="Mentions légales"
+    description="Mentions légales du site louissachy.fr : éditeur, directeur de la publication, hébergeur et propriété intellectuelle."
+>
+    <section class="flex flex-col gap-4 pb-16">
+        <h1 class="text-4xl font-bold text-center">Mentions légales</h1>
+        <p class="text-pblack text-center">
+            Dernière mise à jour : {lastUpdate}
+        </p>
+
+        <div class="prose prose-lg mx-auto max-w-3xl pt-10">
+            <h2>Éditeur du site</h2>
+            <p>
+                Le site <strong>louissachy.fr</strong> est édité par {SITE_TITLE},
+                à titre personnel. Il s'agit d'un site vitrine à caractère non
+                commercial, présentant un parcours et des travaux de développement.
+            </p>
+            <p>
+                Conformément à l'article 6 III 2° de la loi n° 2004-575 du 21 juin
+                2004 pour la confiance dans l'économie numérique, en tant que
+                personne physique éditant un site à titre non professionnel, je ne
+                publie pas mon adresse personnelle. Ces informations sont détenues
+                par l'hébergeur du site, qui peut les communiquer aux autorités
+                judiciaires sur réquisition.
+            </p>
+
+            <h2>Directeur de la publication</h2>
+            <p>{SITE_TITLE}.</p>
+
+            <h2>Contact</h2>
+            <p>
+                Pour toute demande relative au site, vous pouvez me joindre via
+                mes profils professionnels, dont les liens figurent en pied de
+                page : <a
+                    href="https://www.linkedin.com/in/louis-sachy/"
+                    target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a
+                > ou <a
+                    href="https://www.malt.fr/profile/louissachy"
+                    target="_blank"
+                    rel="noopener noreferrer">Malt</a
+                >.
+            </p>
+
+            <h2>Hébergement</h2>
+            <p>
+                Le site est hébergé par <strong>GitHub Pages</strong>, service de
+                GitHub, Inc.
+            </p>
+            <p>
+                GitHub, Inc.<br />
+                88 Colin P. Kelly Jr. Street<br />
+                San Francisco, CA 94107<br />
+                États-Unis<br />
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                    >github.com</a
+                >
+            </p>
+
+            <h2>Propriété intellectuelle</h2>
+            <p>
+                Sauf mention contraire, les textes, les photographies et le code
+                source de ce site sont la propriété de {SITE_TITLE}. Toute
+                reproduction ou représentation, totale ou partielle, à des fins
+                autres que la consultation individuelle et privée, est soumise à
+                autorisation préalable.
+            </p>
+            <p>
+                Les noms, marques et logos des technologies, entreprises et
+                organismes cités sur ce site appartiennent à leurs propriétaires
+                respectifs et ne sont mentionnés qu'à titre de référence.
+            </p>
+
+            <h2>Crédits</h2>
+            <ul>
+                <li>
+                    Site développé avec <a
+                        href="https://astro.build"
+                        target="_blank"
+                        rel="noopener noreferrer">Astro</a
+                    >.
+                </li>
+                <li>
+                    Polices de caractères Alexandria et Kablammo, distribuées sous
+                    licence SIL Open Font License.
+                </li>
+            </ul>
+
+            <h2>Liens hypertextes</h2>
+            <p>
+                Ce site renvoie vers des sites tiers sur lesquels je n'exerce aucun
+                contrôle. Leur contenu ne saurait engager ma responsabilité.
+            </p>
+
+            <h2>Données personnelles</h2>
+            <p>
+                Le traitement des données personnelles et l'usage des cookies sont
+                détaillés dans la <a href="/politique-de-confidentialite"
+                    >politique de confidentialité</a
+                >.
+            </p>
+        </div>
+    </section>
+</Main>
