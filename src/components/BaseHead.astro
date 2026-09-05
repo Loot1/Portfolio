@@ -18,6 +18,10 @@ const imageURL = new URL(image, Astro.site ?? Astro.url);
 
 // Certaines pages passent une description en HTML (elle est aussi rendue dans
 // le corps de la page) : les balises meta doivent recevoir du texte brut.
+// Chaque page doit avoir un titre unique : on suffixe le nom du site, sauf
+// sur l'accueil dont le titre est déjà celui du site.
+const pageTitle = title === SITE_TITLE ? title : `${title} - ${SITE_TITLE}`;
+
 const metaDescription = description
   .replace(/<[^>]*>/g, " ")
   .replace(/\s+/g, " ")
@@ -43,9 +47,9 @@ const metaDescription = description
 <link rel="preload" href="/fonts/Kablammo-Regular.woff" as="font" type="font/woff" crossorigin />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
+<title>{pageTitle}</title>
 <ClientRouter />
-<meta name="title" content={title} />
+<meta name="title" content={pageTitle} />
 <meta name="description" content={metaDescription} />
 
 <!-- Flux RSS -->
@@ -61,15 +65,15 @@ const metaDescription = description
 <meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={metaDescription} />
 <meta property="og:image" content={imageURL} />
-<meta property="og:image:alt" content={title} />
+<meta property="og:image:alt" content={pageTitle} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={pageTitle} />
 <meta property="twitter:description" content={metaDescription} />
 <meta property="twitter:image" content={imageURL} />
-<meta property="twitter:image:alt" content={title} />
+<meta property="twitter:image:alt" content={pageTitle} />
