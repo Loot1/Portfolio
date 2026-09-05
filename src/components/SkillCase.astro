@@ -14,7 +14,7 @@ export interface SkillCaseProps extends HTMLAttributes<'div'> {
 <li class="text-left rounded-3xl border-1 border-black shadow-card group hover:shadow-hover transition px-4 py-6 flex flex-col gap-6">
     <div class="flex flex-row gap-4 items-center">
         <div class="bg-pblue rounded-full text-4xl p-2 self-start border-1 border-black shadow-card1 group-hover:shadow-card transition">
-            <Icon name={icon} />
+            <Icon name={icon} aria-hidden="true" />
         </div>
         <h2 class="text-xl font-semibold">{title}</h2>
     </div>

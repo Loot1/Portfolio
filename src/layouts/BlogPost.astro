@@ -74,7 +74,7 @@ const getRandomClass = () => {
                   </div>
                 )
               }
-              <Icon name={icon} class="text-5xl" transition:animate="fade" />
+              <Icon name={icon} class="text-5xl" aria-hidden="true" transition:animate="fade" />
             </div>
             <hr />
           </div>
@@ -90,7 +90,7 @@ const getRandomClass = () => {
                     return (
                       <li class={`text-left rounded-lg border-1 border-black shadow-card group hover:shadow-hover transition px-2 py-2 ${getRandomClass()}`} >
                         <a href={`/projects/${post.id}/`}>
-                          <h4>{post.data.title}</h4>
+                          <h2>{post.data.title}</h2>
                         </a>
                       </li>
                     );

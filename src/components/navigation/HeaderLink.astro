@@ -39,6 +39,7 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
         `rounded-md border-black inline-block px-5 py-2 hover:border-1 ${getType(style)} transition ease-in-out`,
         { active: isActive },
     ]}
+    aria-current={isActive ? "page" : undefined}
     {...props}
 >
     {text}

@@ -50,11 +50,11 @@ const getRandomClass = () => {
                                         <div
                                             class={`${randomClass} text-4xl p-2 self-start border-1 border-black shadow-card1 group-hover:shadow-card transition`}
                                         >
-                                            <Icon name={post.data.icon} />
+                                            <Icon name={post.data.icon} aria-hidden="true" />
                                         </div>
-                                        <h4 class="text-xl font-semibold">
+                                        <h2 class="text-xl font-semibold">
                                             {post.data.title}
-                                        </h4>
+                                        </h2>
                                         <p class="date -mt-4 text-sm font-light">
                                             <FormattedDate
                                                 date={post.data.pubDate}
