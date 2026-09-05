@@ -21,7 +21,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/skills/
             {SKILLS.map(skill => (
                 <SkillCase title={skill.title} icon={skill.icon} description={skill.description}>
                     {skill.images.map(image => (
-                        <Image class="transition h-10 w-10" src={images[BASE_PATH + image]()} alt={`Logo de ${image.split('.')[0]}`} />
+                        <Image
+                            class="transition h-10 w-10"
+                            src={images[BASE_PATH + image]()}
+                            alt={`Logo de ${image.split('.')[0]}`}
+                            width={40}
+                            height={40}
+                            densities={[2]}
+                        />
                     ))}
                 </SkillCase>
             ))}
