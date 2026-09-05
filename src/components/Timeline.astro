@@ -17,7 +17,7 @@ export interface TimelineProps extends HTMLAttributes<'div'> {
         <ol class="relative z-10">
             {values.map((value : any) => (
                 <li class="mb-10 ms-16 group transition">
-                    <div class="absolute flex items-center bg-pyellow justify-center rounded-full text-4xl p-2 -start-3 border-1 border-black shadow-card1 group-hover:shadow-card transition">
+                    <div class="absolute flex items-center bg-pyellow justify-center rounded-full text-4xl p-2 -inset-s-3 border-1 border-black shadow-card1 group-hover:shadow-card transition">
                         <Icon name={value.icon} />
                     </div>
                     <h4 class="mb-1 text-lg font-semibold">
