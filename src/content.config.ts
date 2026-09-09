@@ -10,6 +10,10 @@ const projects = defineCollection({
         icon: z.string(),
         title: z.string(),
         description: z.string(),
+        // Variantes réservées aux balises meta, quand le titre et l'accroche
+        // affichés sont trop courts pour le référencement.
+        seoTitle: z.string().optional(),
+        seoDescription: z.string().optional(),
         // Transform string to Date object
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),

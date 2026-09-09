@@ -7,23 +7,32 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  /** Titre destiné aux moteurs de recherche quand le titre affiché (le <h1>) est trop court. */
+  seoTitle?: string;
 }
 
 import { ClientRouter } from "astro:transitions";
-import { SITE_TITLE } from "src/consts";
+import { SITE_TITLE, SITE_TITLE_SEO } from "src/consts";
 import defaultSocialImage from "../assets/photo-louis-sachy.jpg";
 import GoogleAnalytics from "./GoogleAnalytics.astro";
 
-const { title, description, image = defaultSocialImage.src } = Astro.props;
+const {
+  title,
+  description,
+  image = defaultSocialImage.src,
+  seoTitle,
+} = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
-const imageURL = new URL(image, Astro.site ?? Astro.url);
+const siteURL = Astro.site ?? new URL("/", Astro.url);
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+const imageURL = new URL(image, siteURL);
 
 // Certaines pages passent une description en HTML (elle est aussi rendue dans
 // le corps de la page) : les balises meta doivent recevoir du texte brut.
 // Chaque page doit avoir un titre unique : on suffixe le nom du site, sauf
 // sur l'accueil dont le titre est déjà celui du site.
-const pageTitle = title === SITE_TITLE ? title : `${title} - ${SITE_TITLE}`;
+const pageTitle =
+  seoTitle ?? (title === SITE_TITLE ? SITE_TITLE_SEO : `${title} - ${SITE_TITLE}`);
 
 const metaDescription = description
   .replace(/<[^>]*>/g, " ")
@@ -36,6 +45,10 @@ const metaDescription = description
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonicalURL} />
+
+<!-- Le site n'existe qu'en français : hreflang fr + x-default sur la page. -->
+<link rel="alternate" hreflang="fr" href={canonicalURL} />
+<link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
 <!-- Favicons -->
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -60,7 +73,7 @@ const metaDescription = description
   rel="alternate"
   type="application/rss+xml"
   title={`${SITE_TITLE} - Projets`}
-  href={new URL("rss.xml", Astro.site ?? Astro.url)}
+  href={new URL("rss.xml", siteURL)}
 />
 
 <!-- Open Graph / Facebook -->

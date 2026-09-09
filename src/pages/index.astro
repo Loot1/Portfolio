@@ -31,14 +31,18 @@ import photo from "@/assets/photo-louis-sachy.jpg";
         <div
             class="md:w-1/2 object-contain flex items-center justify-center p-10 group"
         >
-            <a rel="noopener noreferrer" href="about">
+            <a
+                rel="noopener noreferrer"
+                href="/about"
+                aria-label="Découvrir la présentation de Louis SACHY"
+            >
                 <div
                     class="bg-pblue border-3 border-black rounded-2xl h-64 w-72 shadow-card group-hover:shadow-hover flex transition relative"
                 >
                     <div class="absolute inset-0 overflow-hidden rounded-xl">
                         <Image
                             src={photo}
-                            alt=""
+                            alt="Portrait de Louis SACHY, chef de projet et développeur web à Amiens"
                             width={288}
                             height={288}
                             densities={[2]}

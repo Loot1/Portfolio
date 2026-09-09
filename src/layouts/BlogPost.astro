@@ -10,7 +10,9 @@ type Props = CollectionEntry<"projects">["data"];
 
 const {
   title = "",
+  seoTitle,
   description,
+  seoDescription,
   pubDate,
   updatedDate,
   heroImage = "/fran.jpg",
@@ -43,7 +45,11 @@ const getRandomClass = () => {
 
 <html lang="fr">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead
+      title={title}
+      seoTitle={seoTitle}
+      description={seoDescription ?? description}
+    />
   </head>
   <body>
     <Header />

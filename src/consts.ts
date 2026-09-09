@@ -4,7 +4,11 @@
 import type { HeaderLinkProps } from "./components/navigation/HeaderLink.astro";
 
 export const SITE_TITLE = 'Louis SACHY';
-export const SITE_DESCRIPTION = 'Portfolio de Louis SACHY, développeur web et d\'applications.';
+export const SITE_TAGLINE = 'Chef de projet et développeur web à Amiens';
+// Le nom seul (11 caractères) est trop court pour les moteurs de recherche :
+// l'accueil lui adjoint la baseline pour atteindre 50 à 60 caractères.
+export const SITE_TITLE_SEO = `${SITE_TITLE} - ${SITE_TAGLINE}`;
+export const SITE_DESCRIPTION = 'Portfolio de Louis SACHY, chef de projet et développeur web à Amiens : mon parcours, mes compétences techniques et mes projets.';
 
 export const GA_MEASUREMENT_ID = 'G-DPC8VNLVTB';
 

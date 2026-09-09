@@ -1,6 +1,8 @@
 ---
 title: "Voicey"
 description: 'Bot Discord complet avec dashboard'
+seoTitle: "Voicey, bot Discord et dashboard web - Louis SACHY"
+seoDescription: "Voicey, un bot Discord complet en TypeScript : API Express, base MySQL avec Prisma, site vitrine et dashboard React pour administrer son serveur."
 icon: "projects/discord-bot"
 pubDate: "Apr 23 2026"
 heroImage: "/src/assets/projects/voicey.png"

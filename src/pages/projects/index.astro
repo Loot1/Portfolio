@@ -2,8 +2,7 @@
 import BaseHead from "@/components/BaseHead.astro";
 import Header from "@/components/navigation/Header.astro";
 import Footer from "@/components/navigation/Footer.astro";
-const PAGE_DESCRIPTION =
-    "Les projets que j'ai pu réalisé que ce soit en développement ou en éducation !";
+const PAGE_DESCRIPTION = "Les projets que j'ai réalisés en développement : sites, applications web et actions de sensibilisation associatives.";
 
 import { getCollection } from "astro:content";
 const posts = (await getCollection("projects")).sort(
@@ -28,7 +27,10 @@ const getRandomClass = () => {
 <!doctype html>
 <html lang="fr">
     <head>
-        <BaseHead title="Projets" description={PAGE_DESCRIPTION} />
+        <BaseHead
+            title="Projets de développement et d'éducation"
+            description={PAGE_DESCRIPTION}
+        />
     </head>
     <body>
         <Header />

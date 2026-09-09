@@ -3,7 +3,9 @@ import Layout from "@/layouts/BlogPost.astro";
 const tags = ["louis sachy", "développeur", "amiens"];
 const description = `
   <p class="text-left">
-    Bienvenue sur ma présentation ! 
+    Bienvenue sur ma présentation ! Développeur d'applications et chef de projet à Amiens,
+    je vous raconte ici mon parcours, mes engagements associatifs et ce qui
+    m'anime au quotidien.
   </p>
 `;
 
@@ -17,6 +19,7 @@ if (date.getMonth() < 4 || (date.getMonth() == 4 && date.getDate() < 11))
 	tags={tags}
 	icon="video-game"
 	title="Présentation"
+	seoTitle="Présentation de Louis SACHY, développeur web à Amiens"
 	description={description}
 	pubDate={new Date("March 07 2025")}
 	heroImage="/src/assets/about.jpg"

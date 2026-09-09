@@ -1,6 +1,8 @@
 ---
 title: "Lootflix"
 description: 'Journal de visionnage de séries'
+seoTitle: "Lootflix, suivi de visionnage de séries - Louis SACHY"
+seoDescription: "Lootflix, mon journal de visionnage de séries : une application React et TypeScript qui exploite les données TMDB pour un site statique et optimisé."
 icon: "development/front-end"
 pubDate: "Apr 26 2026"
 heroImage: "/src/assets/projects/lootflix.png"
