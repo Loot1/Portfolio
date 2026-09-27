@@ -21,6 +21,16 @@ export const NAVIGATION : HeaderLinkProps[] = [
 
 export const TRAININGS = [
     {
+        title: "Mastère Manager de Projets Informatiques",
+        icon: "experiences/education",
+        description: [
+            "Mastère Européen Expert IT - Applications intelligentes et Big Data",
+            "Mastère Manager de Projet Expert IT, data, IA"
+        ],
+        period: "2026-2028",
+        organization: "La MANU"
+    },
+    {
         title: "MASTER Métiers de l'Enseignement, de l'Education et de la Formation (MEEF)",
         icon: "experiences/education",
         description: [
@@ -86,6 +96,19 @@ export const TRAININGS = [
 ];
 
 export const JOBS = [
+    {
+        title: "Chef de projet",
+        icon: "experiences/front-end",
+        organization: "Boitmobile",
+        period: "2026 - présent",
+        description: [
+            "- Relation client : échanges réguliers avec les clients, suivi des demandes et accompagnement tout au long du projet.",
+            "- Gestion de projet web : cadrage, organisation, suivi des étapes, coordination des différents intervenants et respect des délais.",
+            "- Analyse et compréhension des besoins : traduction des problématiques métier en besoins fonctionnels et solutions web adaptées.",
+            "- SEO : accompagnement sur les problématiques de référencement naturel, optimisation des contenus et prise en compte des bonnes pratiques SEO dans les projets.",
+            "- Suivi et amélioration : identification des besoins d'évolution et accompagnement des clients dans l'amélioration continue de leurs sites et outils CRM."
+        ]
+    },
     {
         title: "Bénévole / Administrateur",
         icon: "experiences/association",
